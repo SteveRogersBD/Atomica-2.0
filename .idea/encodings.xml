@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/CommentMS/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PostMS/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ServiceRegister/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SharedLibrary/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SharedModule/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SharedModule/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Userms/src/main/java" charset="UTF-8" />
+  </component>
+</project>

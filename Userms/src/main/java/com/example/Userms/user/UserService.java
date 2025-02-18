@@ -1,0 +1,56 @@
+package com.example.Userms.user;
+
+import com.example.Userms.util.UserNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepo userRepo; // Using UserRepo (UserRepository)
+
+    // CREATE - Save a new user
+    @Transactional
+    public User createUser(User user) {
+        return userRepo.save(user); // Save user using UserRepo
+    }
+
+    // READ - Get a user by ID
+    public User getUserById(Long id) {
+        Optional<User> user = userRepo.findById(id); // Fetch user by ID using UserRepo
+        return user.orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+    }
+
+    // READ - Get all users
+    public List<User> getAllUsers() {
+        return userRepo.findAll(); // Fetch all users using UserRepo
+    }
+
+    // UPDATE - Update a user's information
+    @Transactional
+    public User updateUser(Long id, User userDetails) {
+        User user = getUserById(id);
+        user.setUsername(userDetails.getUsername());
+        user.setEmail(userDetails.getEmail());
+        user.setPassword(userDetails.getPassword());
+        user.setRole(userDetails.getRole());
+        user.setDp(userDetails.getDp());
+        user.setAbout(userDetails.getAbout());
+        // Any other fields you want to update
+
+        return userRepo.save(user); // Save the updated user using UserRepo
+    }
+
+    // DELETE - Delete a user by ID
+    @Transactional
+    public User deleteUser(Long id) {
+        User user = getUserById(id);
+        userRepo.delete(user); // Delete user using UserRepo
+        return user;
+    }
+}
