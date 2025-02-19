@@ -42,5 +42,10 @@ public class CommentService {
         commentRepo.delete(comment);
     }
 
+    public List<Comment> getCommentsByUserId(Long userId)
+    {
+        return commentRepo.findByUserId(userId);
+    }
+
 }
 

@@ -1,9 +1,13 @@
 package com.example.Userms.user;
 
+import com.example.Userms.clients.CommentClient;
 import com.example.Userms.clients.PostClient;
+import com.example.Userms.dto.CommentDTO;
 import com.example.Userms.dto.PostDTO;
+import com.example.Userms.external.Comment;
 import com.example.Userms.external.Post;
 import com.example.Userms.util.UserNotFoundException;
+import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +25,9 @@ public class UserService {
 
     @Autowired
     private PostClient postClient;
+
+    @Autowired
+    private CommentClient commentClient;
 
 
     // CREATE - Save a new user
@@ -72,5 +79,16 @@ public class UserService {
             postDTOs.add(Mapper.toPostDTO(post));
         }
         return postDTOs;
+    }
+
+    public List<CommentDTO> getAllComments(Long id)
+    {
+        List<Comment>comments = commentClient.getCommentsByUserId(id).getData();
+        List<CommentDTO> commentDTOS = new ArrayList<>();
+        for (Comment comment : comments )
+        {
+            commentDTOS.add(Mapper.toCommentDTO(comment));
+        }
+        return commentDTOS;
     }
 }

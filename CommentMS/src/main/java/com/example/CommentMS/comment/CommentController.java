@@ -43,4 +43,11 @@ public class CommentController {
         commentService.deleteComment(id);
         return ApiResponse.onSuccess(Message.DELETED, null);
     }
+
+    @GetMapping("/user/{userId}")
+    public ApiResponse<List<Comment>> getCommentsByUserId(@PathVariable Long userId)
+    {
+        List<Comment> comments = commentService.getCommentsByUserId(userId);
+        return ApiResponse.onSuccess(Message.RETRIEVED, comments);
+    }
 }

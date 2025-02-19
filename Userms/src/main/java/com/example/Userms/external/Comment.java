@@ -1,18 +1,15 @@
-package com.example.Userms.dto;
-
-
+package com.example.Userms.external;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentDTO {
+@Data
+public class Comment {
 
     private Long id;
 
@@ -21,4 +18,9 @@ public class CommentDTO {
     private LocalDateTime createdAt;
 
     private List<String> images;
+
+    private Long userId;
+
+    private Long postId;
+
 }

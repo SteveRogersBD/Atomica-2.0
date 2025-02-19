@@ -1,5 +1,6 @@
 package com.example.Userms.user;
 
+import com.example.Userms.dto.CommentDTO;
 import com.example.Userms.dto.PostDTO;
 import com.example.Userms.util.Message;
 import jakarta.validation.Valid;
@@ -51,9 +52,18 @@ public class UserController {
         return ApiResponse.onSuccess(Message.DELETED,user);
     }
 
+    //get all posts by a single user using his id
     @GetMapping("/{id}/post")
     public ApiResponse<List<PostDTO>> getAllPostsByUser(@PathVariable("id") Long id) {
         List<PostDTO> posts = userService.getAllPosts(id);
         return ApiResponse.onSuccess(Message.RETRIEVED,posts);
     }
+
+    //get all comments by a single user using his id
+    @GetMapping("/{id}/comment")
+    public ApiResponse<List<CommentDTO>> getAllCommentsByUser(@PathVariable("id") Long id) {
+        List<CommentDTO> comments = userService.getAllComments(id);
+        return ApiResponse.onSuccess(Message.RETRIEVED,comments);
+    }
+
 }
