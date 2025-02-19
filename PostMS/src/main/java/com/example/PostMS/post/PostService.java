@@ -1,5 +1,7 @@
 package com.example.PostMS.post;
 
+import com.example.PostMS.clients.CommentClient;
+import com.example.PostMS.external.Comment;
 import com.example.PostMS.util.PostNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ public class PostService {
 
     @Autowired
     private PostRepo postRepo;
+    @Autowired
+    private CommentClient commentClient;
 
     // Create a new post
     public Post createPost(Post post) {
@@ -51,5 +55,10 @@ public class PostService {
     public List<Post> getPostsByUserId(Long id)
     {
         return postRepo.findByUserId(id);
+    }
+
+    public List<Comment>getAllComments(Long id)
+    {
+        return commentClient.getCommentsByPostId(id).getData();
     }
 }

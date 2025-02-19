@@ -47,5 +47,10 @@ public class CommentService {
         return commentRepo.findByUserId(userId);
     }
 
+    public List<Comment> getCommentsByPostId(Long postId)
+    {
+        return commentRepo.findByPostId(postId);
+    }
+
 }
 

@@ -50,4 +50,14 @@ public class CommentController {
         List<Comment> comments = commentService.getCommentsByUserId(userId);
         return ApiResponse.onSuccess(Message.RETRIEVED, comments);
     }
+
+    @GetMapping("/post/{postId}")
+    public ApiResponse<List<Comment>> getCommentsByPostId(@PathVariable Long postId)
+    {
+        List<Comment> comments = commentService.getCommentsByPostId(postId);
+        return ApiResponse.onSuccess(Message.RETRIEVED, comments);
+    }
+
+
+
 }

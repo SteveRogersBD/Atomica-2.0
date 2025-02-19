@@ -1,5 +1,6 @@
 package com.example.PostMS.post;
 
+import com.example.PostMS.external.Comment;
 import com.example.PostMS.util.ApiResponse;
 import com.example.PostMS.util.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,13 @@ public class PostController {
     {
         List<Post> posts = postService.getPostsByUserId(id);
         return ApiResponse.onSuccess(Message.RETRIEVED, posts);
+    }
+
+    //get all the comment on a single post
+    @GetMapping("/{id}/comment")
+    public ApiResponse<List<Comment>> getCommentsByPostId(@PathVariable("id") Long id)
+    {
+        List<Comment> comments = postService.getAllComments(id);
+        return ApiResponse.onSuccess(Message.RETRIEVED, comments);
     }
 }
