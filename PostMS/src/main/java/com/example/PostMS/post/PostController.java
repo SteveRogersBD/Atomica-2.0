@@ -47,4 +47,12 @@ public class PostController {
         Post post = postService.deletePost(id);
         return ApiResponse.onSuccess(Message.DELETED, post);
     }
+
+    //get all the post by a single user
+    @GetMapping("/user/{id}")
+    public ApiResponse<List<Post>> getPostsByUserId(@PathVariable("id") Long id)
+    {
+        List<Post> posts = postService.getPostsByUserId(id);
+        return ApiResponse.onSuccess(Message.RETRIEVED, posts);
+    }
 }

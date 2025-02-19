@@ -1,10 +1,15 @@
 package com.example.Userms.user;
 
+import com.example.Userms.clients.PostClient;
+import com.example.Userms.dto.PostDTO;
+import com.example.Userms.external.Post;
 import com.example.Userms.util.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import mapper.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +17,11 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRepo userRepo; // Using UserRepo (UserRepository)
+    private UserRepo userRepo;
+
+    @Autowired
+    private PostClient postClient;
+
 
     // CREATE - Save a new user
     @Transactional
@@ -52,5 +61,16 @@ public class UserService {
         User user = getUserById(id);
         userRepo.delete(user); // Delete user using UserRepo
         return user;
+    }
+
+    public List<PostDTO> getAllPosts(Long id)
+    {
+        List<Post>posts = postClient.getAllPostsByUser(id).getData();
+        List<PostDTO> postDTOs = new ArrayList<>();
+        for (Post post : posts)
+        {
+            postDTOs.add(Mapper.toPostDTO(post));
+        }
+        return postDTOs;
     }
 }

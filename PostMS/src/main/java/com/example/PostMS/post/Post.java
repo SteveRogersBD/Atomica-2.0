@@ -28,6 +28,9 @@ public class Post {
     @ElementCollection
     private List<String>images;
 
+    @NonNull
+    private Long userId;
+
     //before the entry is saved for the first time in the db, createdAt will be auto
     //assigned
     @PrePersist

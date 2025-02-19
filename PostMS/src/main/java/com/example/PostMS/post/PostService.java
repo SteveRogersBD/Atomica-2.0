@@ -24,7 +24,7 @@ public class PostService {
 
     // Get a post by ID
     public Post getPostById(Long id) {
-        Optional<Post> oPost = postRepo.findById(Math.toIntExact(id));
+        Optional<Post> oPost = postRepo.findById(id);
         if(oPost.isPresent())
         {
             return oPost.get();
@@ -46,5 +46,10 @@ public class PostService {
         Post post = getPostById(id);
         postRepo.delete(post);
         return post;
+    }
+
+    public List<Post> getPostsByUserId(Long id)
+    {
+        return postRepo.findByUserId(id);
     }
 }

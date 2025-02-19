@@ -1,5 +1,6 @@
 package com.example.Userms.user;
 
+import com.example.Userms.dto.PostDTO;
 import com.example.Userms.util.Message;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,11 @@ public class UserController {
     public ApiResponse<User> deleteUser(@PathVariable Long id) {
         User user = userService.deleteUser(id);
         return ApiResponse.onSuccess(Message.DELETED,user);
+    }
+
+    @GetMapping("/{id}/post")
+    public ApiResponse<List<PostDTO>> getAllPostsByUser(@PathVariable("id") Long id) {
+        List<PostDTO> posts = userService.getAllPosts(id);
+        return ApiResponse.onSuccess(Message.RETRIEVED,posts);
     }
 }

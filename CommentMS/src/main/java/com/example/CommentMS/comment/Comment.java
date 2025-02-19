@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,6 +26,12 @@ public class Comment {
 
     @ElementCollection
     private List<String> images;
+
+    @NonNull
+    private Long userId;
+
+    @NonNull
+    private Long postId;
 
     @PrePersist
     protected void onCreate()

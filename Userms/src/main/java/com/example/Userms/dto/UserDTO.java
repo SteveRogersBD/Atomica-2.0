@@ -20,7 +20,7 @@ public class UserDTO {
     private String dp;
     private String about;
     private LocalDateTime createdAt;
-    private List<PostDTO> comments;  // List of Comments
-    private List<CommentDTO> reviews;    // List of Reviews
+    private List<PostDTO> posts;  // List of Comments
+    private List<CommentDTO> comments;    // List of Reviews
 
 }
