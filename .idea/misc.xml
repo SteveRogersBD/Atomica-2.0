@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/CommentMS/pom.xml" />
         <option value="$PROJECT_DIR$/SharedLibrary/pom.xml" />
         <option value="$PROJECT_DIR$/ServiceRegister/pom.xml" />
+        <option value="$PROJECT_DIR$/Gateway/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

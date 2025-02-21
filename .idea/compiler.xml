@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ServiceRegister" />
+        <module name="Gateway" />
       </profile>
       <profile name="Annotation profile for Shared Library" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -37,6 +38,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="CommentMS" options="-parameters" />
+      <module name="Gateway" options="-parameters" />
       <module name="PostMS" options="-parameters" />
       <module name="ServiceRegister" options="-parameters" />
       <module name="SharedLibrary" options="-parameters" />
